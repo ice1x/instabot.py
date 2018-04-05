@@ -1,13 +1,5 @@
 # InstaBot
 
----
-
-### On 03-Apr-2018, I wiped out the existing issues/PRs associated with this repo, they've built up due to some neglect. Now, there's a clean slate. So any new issues must follow the format provided and PRs will be reviewed an accepted. Contributors are encouraged to review existing issues and submit changes.
-
-### Please do not clone this repo and publish it as your own. Fork the repo if you wish to publish any changes.
-
----
-
 > Toolkit for building automated Instagram bots without direct access to the Instagram API or passsing through the review process.
 
 [![Donate](https://img.shields.io/badge/PayPal-Donate-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=7BMM6JGE73322&lc=US)
@@ -25,7 +17,7 @@
 | database\_name       | str | change the name of database file to use multiple account | "follows\_db.db"   |
 | like_per_day         | int | Number of photos to like per day (over 1000 may cause throttling) | 1000 |
 | media_max_like       | int | Maximum number of likes on photos to like (set to 0 to disable) | 0    |
-| media_min_like       | int | Minimum number of likes on photos to like (set to 0 to disable) | 0    |
+| media_min_like       | int | Maximum number of likes on photos to like (set to 0 to disable) | 0    |
 | follow_per_day       | int | Photos to like per day                               | 0    |
 | follow_time          | int | Seconds to wait before unfollowing                   | 5 * 60 * 60 |
 | unfollow_per_day     | int | Users to unfollow per day                            | 0    |
