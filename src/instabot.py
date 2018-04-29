@@ -708,6 +708,31 @@ class InstaBot:
                                                            min=self.start_at_m), end="\r")
                 time.sleep(100)
 
+    def do_not_follow_mod(self):
+        while True:
+            now = datetime.datetime.now()
+            if (
+                    datetime.time(self.start_at_h, self.start_at_m) <= now.time()
+                    and now.time() <= datetime.time(self.end_at_h, self.end_at_m)
+            ):
+
+                #  ------------------- Get media_id -------------------
+                if len(self.media_by_tag) == 0:
+                    self.get_media_id_by_tag(random.choice(self.tag_list))
+                    self.this_tag_like_count = 0
+                    self.max_tag_like_count = random.randint(1, self.max_like_for_one_tag)
+                    self.remove_already_liked()
+                # ------------------- Like -------------------
+                self.new_auto_mod_like()
+                # ------------------- Comment -------------------
+                self.new_auto_mod_comments()
+                # Bot iteration in 1 sec
+                time.sleep(3)
+            else:
+                print("sleeping until {hour}:{min}".format(hour=self.start_at_h,
+                                                           min=self.start_at_m), end="\r")
+                time.sleep(100)
+
     def remove_already_liked(self):
         self.write_log("Removing already liked medias..")
         x = 0

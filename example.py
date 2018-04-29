@@ -107,5 +107,8 @@ while True:
         bot.bot_mode = 2
         unfollow_protocol(bot)
 
+    elif mode == 6:
+        bot.do_not_follow_mod()
+
     else:
         print("Wrong mode!")
