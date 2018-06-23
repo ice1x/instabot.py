@@ -280,12 +280,19 @@ class InstaBot:
         })
 
         r = self.s.get(self.url)
-        self.s.headers.update({'X-CSRFToken': r.cookies['csrftoken']})
+        subs1 = r.text[r.text.find("csrf_token")+13:]
+        subs2 = subs1[:subs1.find('\"')]
+        self.s.headers.update({'X-CSRFToken': subs2})
         time.sleep(5 * random.random())
         login = self.s.post(
             self.url_login, data=self.login_post, allow_redirects=True)
-        self.s.headers.update({'X-CSRFToken': login.cookies['csrftoken']})
-        self.csrftoken = login.cookies['csrftoken']
+        r = self.s.get(self.url)
+        subs1 = r.text[r.text.find("csrf_token")+13:]
+        subs2 = subs1[:subs1.find('\"')]
+        self.s.headers.update({'X-CSRFToken': subs2})
+        self.csrftoken = subs2
+        #ig_vw=1536; ig_pr=1.25; ig_vh=772;  ig_or=landscape-primary;
+        self.s.cookies['csrftoken'] = subs2
         #ig_vw=1536; ig_pr=1.25; ig_vh=772;  ig_or=landscape-primary;
         self.s.cookies['ig_vw'] = '1536'
         self.s.cookies['ig_pr'] = '1.25'
